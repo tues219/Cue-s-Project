@@ -21,6 +21,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 10px;
         }
 
         .header {
@@ -537,12 +538,67 @@
         .status-pending { color: #ffc107; font-weight: bold; }
         .status-installment { color: #17a2b8; font-weight: bold; }
 
+        /* Action Bar */
+        .action-bar {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .btn-save-main {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            min-width: 160px;
+        }
+
+        .btn-save-main:hover {
+            background: #0056b3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-clear-main {
+            background: #ffc107;
+            color: #333;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            min-width: 160px;
+        }
+
+        .btn-clear-main:hover {
+            background: #e0a800;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 5px;
+            }
+
             .compact-entry-card {
-                margin: 0 10px 20px 10px;
+                margin: 0 5px 20px 5px;
                 padding: 20px;
                 max-width: none;
+                width: 95%;
             }
             
             .card-header {
@@ -634,6 +690,19 @@
             .export-buttons {
                 flex-direction: column;
             }
+            
+            .action-bar {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .btn-save-main,
+            .btn-clear-main {
+                width: 100%;
+                padding: 18px;
+                font-size: 18px;
+                min-width: auto;
+            }
         }
     </style>
 </head>
@@ -657,10 +726,9 @@
         <div id="entry" class="tab-content active">
             <!-- Compact Entry Card -->
             <div class="compact-entry-card">
-                <!-- Header with Title and Save Button -->
+                <!-- Header with Title -->
                 <div class="card-header">
                     <h2 class="card-title">🦷 ลงข้อมูลคนไข้ใหม่</h2>
-                    <button type="button" class="btn-save-primary" onclick="savePatient()">💾 บันทึก</button>
                 </div>
                 
                 <!-- Auto Date/Time Row -->
@@ -728,10 +796,13 @@
                 <!-- Notes Row -->
                 <div class="field-row">
                     <label class="field-label">📝 หมายเหตุ:</label>
-                    <div style="display: flex; gap: 10px; width: 100%;">
-                        <textarea id="patientNotes" class="notes-input" placeholder="หมายเหตุ..." rows="1"></textarea>
-                        <button type="button" class="btn-clear" onclick="clearForm()">🔄</button>
-                    </div>
+                    <textarea id="patientNotes" class="notes-input" placeholder="หมายเหตุ..." rows="1"></textarea>
+                </div>
+                
+                <!-- Bottom Action Bar -->
+                <div class="action-bar">
+                    <button type="button" class="btn-save-main" onclick="savePatient()">💾 บันทึก</button>
+                    <button type="button" class="btn-clear-main" onclick="clearForm()">🔄 ล้างฟอร์ม</button>
                 </div>
             </div>
             
