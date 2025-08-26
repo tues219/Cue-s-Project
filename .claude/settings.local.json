@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m pip install:*)",
+      "Bash(python3:*)"
+    ],
+    "additionalDirectories": [
+      "/Users/tues219/Projects"
+    ]
+  }
+}
